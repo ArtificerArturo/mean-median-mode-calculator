@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Circle Area Calculator</title>
+      <link rel="stylesheet" href="style.css" />
+   </head>
+
+   <body>
+      <script src="script.js" defer></script>
+
+      <div class="calculatorContainer" id="MMMCalculator">
+         <div class="title">Mean, Median, and Mode Calculator</div>
+         <div class="background">
+            <div class="intro">Enter a dataset with comma, space, or newline delimiters</div>
+            <div>
+               <textarea id="dataInput" autofocus></textarea>
+            </div>
+            <div class="reset">
+               <button class="reset" onclick="clearForm()" data-uw-rm-kbnav="click">Clear</button>
+            </div>
+            <div>
+               <button class="calculate" onclick="calculateMMM()" data-uw-rm-kbnav="click">Calculate</button>
+            </div>
+         </div>
+
+         <div id="bugLink" style="text-align: center; margin-bottom: 20px; font-size: 90%">
+            Found a bug?
+            <a
+               class="ylist"
+               href="https://airtable.com/appR7FfpamrmFpTmL/pagGUR4cIuGPtr6cm/form?prefill_Calculator=MeanMedianModeCalculator&amp;hide_Calculator=true"
+               target="_blank"
+               rel="noopener"
+               >Let us know!</a
+            >
+         </div>
+      </div>
+   </body>
+</html>
