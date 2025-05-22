@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Circle Area Calculator</title>
+      <title>Mean, Median, and Mode Calculator</title>
       <link rel="stylesheet" href="style.css" />
    </head>
 
@@ -13,13 +13,11 @@
       <div class="calculatorContainer" id="MMMCalculator">
          <div class="title">Mean, Median, and Mode Calculator</div>
          <div class="background">
-            <div class="intro">Enter a dataset with comma, space, or newline delimiters</div>
+            <div class="intro">Enter a data set separated by commas, spaces, or line breaks.</div>
             <div>
-               <textarea id="dataInput" autofocus></textarea>
+               <textarea id="dataInput" autofocus placeholder="1, 2, 3" maxlength="100000"></textarea>
             </div>
-            <div class="reset">
-               <button class="reset" onclick="clearForm()" data-uw-rm-kbnav="click">Clear</button>
-            </div>
+
             <div>
                <button class="calculate" onclick="calculateMMM()" data-uw-rm-kbnav="click">Calculate</button>
             </div>

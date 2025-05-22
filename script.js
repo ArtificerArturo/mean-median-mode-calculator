@@ -12,6 +12,17 @@ function calculateMMM() {
       .filter(Boolean) //removes empty strings
       .map(Number) //converts to numbers
 
+   let resultElement = document.createElement("div")
+   resultElement.setAttribute("class", "result")
+   resultElement.style.color = "black"
+
+   if (dataArray == "") {
+      resultElement.innerHTML = "Please enter a dataset."
+      resultElement.style.color = "red"
+      backgroundElement.appendChild(resultElement)
+      return
+   }
+
    const mean = (array) => array.reduce((a, b) => a + b) / array.length
 
    function median(array) {
@@ -62,20 +73,35 @@ function calculateMMM() {
       else return modes
    }
 
-   let resultElement = document.createElement("div")
-   resultElement.setAttribute("class", "result")
+   let table = document.createElement("table")
+   let meanRow = document.createElement("tr")
+   let medianRow = document.createElement("tr")
+   let modeRow = document.createElement("tr")
 
-   resultElement.innerHTML = `Mean: ${mean(dataArray)}<br>Median: ${median(dataArray)}<br>Mode: ${mode(dataArray)}`
+   meanRow.innerHTML = `<td><strong>Mean</strong></td><td>${resultConditioner(parseFloat(mean(dataArray)))}</td>`
+   medianRow.innerHTML = `<td><strong>Median</strong></td><td>${median(dataArray)}</td>`
+   let modeResult = mode(dataArray)
+   if (typeof modeResult == "string") modeRow.innerHTML = `<td><strong>Mode</strong></td><td>No mode</td>`
+   else if (typeof modeResult == "object") {
+      if (modeResult.length == 1)
+         modeRow.innerHTML = `<td><strong>Mode</strong></td><td>${mode(dataArray).join(", ")}</td>`
+      else modeRow.innerHTML = `<td><strong>Modes</strong></td><td>${mode(dataArray).join(", ")}</td>`
+   }
 
+   table.appendChild(meanRow)
+   table.appendChild(medianRow)
+   table.appendChild(modeRow)
+   resultElement.appendChild(table)
    backgroundElement.appendChild(resultElement)
 }
 
-function clearForm() {
-   const dataInputElement = document.querySelector("#MMMCalculator #dataInput")
-   const backgroundElement = document.querySelector("#MMMCalculator .background")
-   dataInputElement.value = ""
-
-   if (document.querySelector("#MMMCalculator .result")) {
-      document.querySelector("#MMMCalculator .result").remove()
+function resultConditioner(number) {
+   //Intelligent rounding. Results with only decimal component need sig figs,
+   //results greater than 1 do not
+   if (number < 1 && number > -1) {
+      number = +number.toPrecision(2)
+   } else {
+      number = +number.toFixed(2)
    }
+   return number
 }
