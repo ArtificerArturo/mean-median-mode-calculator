@@ -42,12 +42,18 @@
    padding: 10px;
    background-color: white;
    border: solid 1px #cbcbcb;
+   color: black;
    width: 350px;
    height: 120px;
    font-size: 18px;
 }
-#MMMCalculator td {
+#MMMCalculator .background td {
    padding-right: 20px;
+   text-align: left;
+}
+
+#MMMCalculator .background table {
+   border: none;
 }
 
 /* do not bring to wordpress below this line */
